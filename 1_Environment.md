@@ -11,6 +11,18 @@
     # Application Software
         Provides desktop and server programs for diverse things as editing and serving web pages.
 
+# What does Linux Run On ?
+    # Intel/AMD x86 and x86_64
+        Intel 32-bit and 64-bit used in most desktop and laptop.
+    
+    # AMD64: Advanced Micro Device(AMD) 64-bit CPUs.
+
+    # ARM(aarch64): The Advanced RISC Machines CPUs, developed by Arm Ltd Corporation.These CPUs are used in small-scale systems such as the Raspberry Pi.
+
+    # IBM Z(s390x): IBM series of mainframes and microcomputers.
+
+    # RISC-V: The Reduced Instruction Set Computing, version 5 open standard architecture that can be used by any CPU manufacturer.
+
 # LICENSE
     # Copyleft Licenses: Allows you to download and use the source code but you are restricted on the usage and distribution of the source code. 2 types of Copyleft License.
        
@@ -29,4 +41,21 @@
                 Allows you to create derivative software, but they all have to be under the original copyright
 
 
-        
+# Linux Distribution
+    # Red-Hat Enterprise Linux
+        - 1995.
+        - It is primarily focused on business Linux environments.
+        - In most case requires the purchase of a license which comes with full customer support to help with setting up and troubleshooting the Linux system.
+        - An Trial version of this is Fedora, before it use to be CentOS.
+    
+    # Ubuntu
+        - Release in 2004.
+        - A free Linux distro base on the Debian distribution.
+    
+    # OpenSUSE
+        - First released in 1994.
+        - YAST( Yet Another Setup Tool) is this distro unique utility which allows you to control many system services from one interface.
+
+
+
+# READ PAGE 52( IPad on Landscape) to see the Exam Essentials
