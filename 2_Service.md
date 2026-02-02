@@ -59,5 +59,66 @@
                         It does create table but stores data as individual documents. Each data element being independent from the other data elements in the database. MangoDB has no security.
                 
         # MAIL SERVER
+            <!-- Instead of having  one monolith program that handles all of the pieces required for sending and receiving mail, linux uses multiple small programs that work together in the processing of email messages. The MUA interact with client which exclude it from the server while MTA and MDA are in the linux server-->
+
+                    # The mail transfer agent ( MTA )
+                            The MTA is responsible for handling both incoming and outgoing email messages on the server. 
+                            
+                            **MTA software packages**
+                                #Sendmail: 
+                                - The sendmail MTA package is versatile. 
+                                - Most of the features in sendmail are synonymous with email systems(virtual domains, message forwarding, user aliases, mail lists, host masquerading).
+                                - Its configuration is very complex.
+
+                                #Postfix:
+                                - The Postfix MTA was written as a modular application, using several different programs to implement the MTA functionality.
+                                - It uses two small configuration( plaintext parameters and value names to define the functionality.).
+
+                                #Exim:
+                                - Exim package just as the sendmail uses a monolith program to handle all the email functions.
+                                - Attempt to avoid queuing messages as much as possible, instead relying on immediate delivery in most environments.
+
+                    # The Mail Delivery agent( MDA )
+                            Linux implementations rely on separate stand-alone mail delivery agent ( MDA ) programs to deliver messages to local users.
+
+                            **MDA Programs**
+                                #Binmail:
+                                -Location: /bin/mail.
+                                - It is simple and can read email messages stored in the standard /var/spool/mail directory or can point it to an alternative mailbox.
+
+                                #Procmail:
+                                - Versatile in creating user-configured recipes that allow a user to direct how the server processes received mail.
+                    
+                    # The Mail User Agent( MUA )
+                            - Most software packages are available in linux for reading and sending mail. 
+                            - Most remote client packages use Internet Message Access Protocol Version 4(IMAP4) to communicate with email server and work with email messages.
+                            - To support IMAP4 client linux uses IMAP4 server an example is Dovecot.
+
+# Serving Local Networks
+
+    # File Servers
+        
+        # Peer-to-peer
+                - Here, one workstation connects locally to another workstation to allow the sharing of files stored on its hard drive. Becomes complex when more than 2 computers are involved.
+
+        # CLient-server
+                - Client-server method of file sharing utilizes a centralized file server for sharing files that multiple clients can access and modify.
+                - The server(administrator) controls files accessibility, preventing unauthorized access.
+
+    NOTE: IN LINUX THERE ARE TWO COMMON SOFTWARE PACKAGES USE FOR SHARING FILE: NFS and SAMBA
+
+            # Network File System(NFS)
+                - NFS is the process of sharing file in a network environment.Here, the linux 
+                system shares a portion of its virtual directory on the network, giving access to clients, or other servers.
+                - The software package used here is nfs-utils( it handles driver and support client and servers software to both share local folder on network and connect with remote folders).
+
+            # Samba
+                - While Windows workstations and servers can use NFS, the default file sharing method used in Windows is the System Message Block(SMB) protocol.
+                - SMB protocol authorise 
+    
+
+
+
+
 
     
