@@ -103,7 +103,7 @@
 
         # CLient-server
                 - Client-server method of file sharing utilizes a centralized file server for sharing files that multiple clients can access and modify.
-                - The server(administrator) controls files accessibility, preventing unauthorized access.
+                - The administrator controls files accessibility, preventing unauthorized access.
 
     NOTE: IN LINUX THERE ARE TWO COMMON SOFTWARE PACKAGES USE FOR SHARING FILE: NFS and SAMBA
 
@@ -114,7 +114,20 @@
 
             # Samba
                 - While Windows workstations and servers can use NFS, the default file sharing method used in Windows is the System Message Block(SMB) protocol.
-                - SMB protocol authorise 
+                - SMB protocol authorise the possibility to create open source software that can interact with Windows servers and clients.
+                - SAMBA was created to allow linux system to connect to either the Windows server(permitting workstation to connect to its shared folders) or clients(connecting to Windows server shared folders). 
+                - It takes some configuration to get it set up.
+
+    # Print Servers
+        - Common Unix Printing System(CUPS) is the standard linux print sharing software which allow a linux system to connect to any printer resource(locally/network).
+        - The key to CUPS is the Printer drivers, many printers manufacturer create CUPS driver so that the linux system can connect to the printers.
+        - IPP( Internet Printing Protocol) is the protocol utilized for network printer.
+
+    # Network Resource Servers
+       # IP addresses
+            - Every device on a local network must have a unique IP address to interact with other devices on the network.
+            - DHCP( Dynamic Host Configuration Protocol ) Controls the 
+        
     
 
 
