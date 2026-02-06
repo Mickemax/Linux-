@@ -123,7 +123,7 @@
         - The key to CUPS is the Printer drivers, many printers manufacturer create CUPS driver so that the linux system can connect to the printers.
         - IPP( Internet Printing Protocol) is the protocol utilized for network printer.
 
-    # Network Resource Servers
+    # Network Resource Servers <!-- Some of the basic network-oriented service you may see on a linux server-->
        # IP addresses
             - Every device on a local network must have a unique IP address to interact with other devices on the network.
             - DHCP( Dynamic Host Configuration Protocol ) keeps track of the IP Address assigned to a workstation, ensuring that no two workstation receive the same IP address.
@@ -218,10 +218,3 @@
             C
             A
             C
-    
-
-
-
-
-
-    
