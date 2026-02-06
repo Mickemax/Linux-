@@ -126,8 +126,98 @@
     # Network Resource Servers
        # IP addresses
             - Every device on a local network must have a unique IP address to interact with other devices on the network.
-            - DHCP( Dynamic Host Configuration Protocol ) Controls the 
-        
+            - DHCP( Dynamic Host Configuration Protocol ) keeps track of the IP Address assigned to a workstation, ensuring that no two workstation receive the same IP address.
+            - Once you have a DHCPd server connected to your network, you will need to configure the Linux client to use it to obtain his IP address.
+
+		#logging 
+			- Linux maintains log files that record various key details about the system as it runs.
+					*rsyslogd
+							It is utilized by SysVinit and Upstart systems to accept logging data from remote servers.
+					*journald
+							The Systemd system utilized journald service for both local and remote logging for system information.
+
+	# Name Servers
+			- DNS(Domain Name Server) maps IP address to a host naming scheme on networks.
+			- Linux Server uses BIND software package to provide DNS naming service. 
+
+	# Network Manaagement
+		- The SNMP( Simple Network Management Protocol) provides a way for an administeator to query remote network devices and servers to obtain information, about their configuration, status and even performance.
+		- The most popular SNMP software package in Linux is the open source net-snmp package. This package has SNMPv3 compatibility, allowing you to securely monitor all aspects of a Linux server remotely.
+  	
+	# Time 
+		- For most network applications to work correctly, both servers and clients need to have their internal clocks coordinated with the same time.NTP( Network Time Protocol) accomplishes this.  
+
+# IMPLEMENTING SECURITY
+ 	# Authentication Server
+		- The core security for Linux is the standard userid and password assigned to each individual user on the system and stored in either the /etc/passwd( on non-legacy systems) or the /etc/shadow file.
+				<!-- Methods on sharing user account database -->
+
+			# NIS( Network Information System)
+				- This is a directory service that allows both clients and server to share a common naming directory.
+
+			# Kerberos
+				- It uses symmetric-key cryptography to securely authenticate users with a centralized server database.
+			
+			# LDAP(Lightweight Directory Access Protocol)
+				- the LDAP was created to provide simple network authentication services to multiple applications and devices on a local network.
+				- It was design to design a hierarchical database to store objects in your network.
+    
+			# Certificate Authority
+				- A cerificate is an encrypted key that implements a two-factor authentication method. The user must possess;
+						* Something they posses, such as the Certicate file.	
+						* Something they know, such as a PIN.
+
+			# Access Server( SSH)
+				- The Secure Shell provides a layer of encryption around data sent accross the network. 
+				- The most popular software package that implement SSH in the linux environment is OpenSSH package.
+
+            # VIrtual Private Network
+                - The VPN protocol creates a secure point-to-point tunnul between a remote client or server and a VPN server on your local network.
+            
+            # Proxy Server
+                - A web proxy server allows you to intercept web requests from local network clients.
+                - A popular web proxy server in Linux is the Squid package, which can be configure to work both as a filter and as a caching server. 
+                - The nginx web server also has the ability to work as a web proxy.
+
+            # Monitor
+                - The Nagios software package uses SNMP to monitor the performance and logs of Linux servers and provide results in a simple graphical environment.
+
+# IMPROVING PERFORMANCE
+    # Clustering 
+            - A computer cluster improves application performance by dividing application functions among multiple servers.
+            - Each server is configured similarly and can perform the same functions, but the cluster management software determines how to split the application function among the servers.
+            - Database cluster may encounter sluggish response due to the data Management software having to make special calls and managing the locking mechanisms necessary when migrating data blocks between two or more database instances.
+    
+    # Load Balancing
+                <!--Load balancing is a special application of clustering -->
+            - A load balancer redirects entire client requests to one of a cluster of servers. 
+            - While a single server processes the entire request the client load is distributed among the multiple servers.
+    
+    # Containers
+                <!-- Challenge of application developer is to create a development environment that mirrors the actual server.-->
+            - Linux containers help solve this problem by creating a self-contained environment to encapsulate applications. 
+            - A container packages all of the necessary application files, library files, and operating system libraries into a bundle that you can easily move between environments.
+
+            B
+            A
+            C
+            B
+            A
+            C
+            B
+            C
+            B - D
+            B
+            A&B
+            B - C
+            D
+            C - B
+            B -C
+            B -A
+            C
+            C
+            A
+            C
     
 
 
