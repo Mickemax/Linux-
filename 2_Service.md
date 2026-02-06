@@ -123,50 +123,15 @@
         - The key to CUPS is the Printer drivers, many printers manufacturer create CUPS driver so that the linux system can connect to the printers.
         - IPP( Internet Printing Protocol) is the protocol utilized for network printer.
 
-    # Network Resource Servers <!-- Some of the basic network-oriented service you may see on a linux server-->
+    # Network Resource Servers
        # IP addresses
             - Every device on a local network must have a unique IP address to interact with other devices on the network.
-            - DHCP( Dynamic Host Configuration Protocol ) keeps track of the IP Address assigned to a workstation, ensuring that no two workstation receive the same IP address.
-            - Once you have a DHCPd server connected to your network, you will need to configure the Linux client to use it to obtain his IP address.
-
-		#logging 
-			- Linux maintains log files that record various key details about the system as it runs.
-					*rsyslogd
-							It is utilized by SysVinit and Upstart systems to accept logging data from remote servers.
-					*journald
-							The Systemd system utilized journald service for both local and remote logging for system information.
-
-	# Name Servers
-			- DNS(Domain Name Server) maps IP address to a host naming scheme on networks.
-			- Linux Server uses BIND software package to provide DNS naming service. 
-
-	# Network Manaagement
-		- The SNMP( Simple Network Management Protocol) provides a way for an administeator to query remote network devices and servers to obtain information, about their configuration, status and even performance.
-		- The most popular SNMP software package in Linux is the open source net-snmp package. This package has SNMPv3 compatibility, allowing you to securely monitor all aspects of a Linux server remotely.
-  	
-	# Time 
-		- For most network applications to work correctly, both servers and clients need to have their internal clocks coordinated with the same time.NTP( Network Time Protocol) accomplishes this.  
-
-# IMPLEMENTING SECURITY
- 	# Authentication Server
-		- The core security for Linux is the standard userid and password assigned to each individual user on the system and stored in either the /etc/passwd( on non-legacy systems) or the /etc/shadow file.
-				<!-- Methods on sharing user account database -->
-
-			# NIS( Network Information System)
-				- This is a directory service that allows both clients and server to share a common naming directory.
-
-			# Kerberos
-				- It uses symmetric-key cryptography to securely authenticate users with a centralized server database.
-			
-			# LDAP(Lightweight Directory Access Protocol)
-				- the LDAP was created to provide simple network authentication services to multiple applications and devices on a local network.
-				- It was design to design a hierarchical database to store objects in your network.
+            - DHCP( Dynamic Host Configuration Protocol ) Controls the 
+        
     
-			# Certificate Authority
-				- A cerificate is an encrypted key that implements a two-factor authentication method. The user must possess;
-						* Certicate file	
-						* PIN
 
-			# Access Server( SSH)
-				- The Secure Shell provides a layer of encryption around data sent accross the network. 
-				- The most popular software package that implement SSH in the linux environment is OpenSSH package.
+
+
+
+
+    
