@@ -15,7 +15,7 @@
 		
 		- pwd : Priting working directory.
 		- ll ( Demonstrated on a rocky distribution): is an alias for ls -l( which display the directory and sub-directory metadata).
-			<!-- An alias is a short command that represent another-->
+			<!--An alias is a short command that represent another-->
 		- tree : The output from a tree command creates a tierd structure, showing which files are associated with which directory, making it easy to sort things out.
 		- lsof: display all files currently open by specific user, program, or even network connection.
 		- touch: create empty files. primary use to update a file's timestamps- access and modification.
@@ -26,6 +26,7 @@
 		
 		- cd: change directory.
 
-# Copying and Moving Files
-	
-		
+# Copying and Moving Files	
+	- cp: copy a file or directory locally.
+				cp [OPTION] SOURCE DEST
+	- 
