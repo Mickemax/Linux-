@@ -29,4 +29,21 @@
 # Copying and Moving Files	
 	- cp: copy a file or directory locally.
 				cp [OPTION] SOURCE DEST
-	- 
+	
+	- To copy a directory you need to add the -r option. This will enact a recursive copy.
+	- mv: move or rename a file and directory.
+														mv [OPTION] SOURCE DEST
+	- rsync: rsync [OPTION] SOURCE DEST
+																			Certains switches are helpful for copying large files or creating backups locally.
+
+
+
+
+
+
+
+
+
+
+
+
