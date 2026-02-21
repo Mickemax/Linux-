@@ -32,10 +32,9 @@
 	
 	- To copy a directory you need to add the -r option. This will enact a recursive copy.
 	- mv: move or rename a file and directory.
-														mv [OPTION] SOURCE DEST
+									mv [OPTION] SOURCE DEST
 	- rsync: rsync [OPTION] SOURCE DEST
-																			Certains switches are helpful for copying large files or creating backups locally.
-
+			* This command is used the quickly copy files either locally or across network, in a secure tunnel through open.
 
 
 
