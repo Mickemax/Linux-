@@ -1,4 +1,4 @@
-# Processing Text Files
+# PROCESSING TEXT FILES
     # Filtering Text
         cut OPTION [FILE]
          - it helps extract small data sections.
@@ -32,7 +32,7 @@
             - gathering statistics on various text files, and to determine counts in a text file. The utility will display the file's number of lines, words, and bytes in that order.
                 note configuration file length are always under 150 bytes.
 
-# Redirecting Input and Ooutput
+# REDIRECTING INPUT AND OUTPUT
     # Handling Standard Output
         - Linux treats every object as a file; output process, such as displaying a text file on a screen.
         # file descriptor that identifies output from a command or script file is 1. STDOUT( Standard Output).
@@ -70,3 +70,19 @@
                 This keyword can be anything signaling the beginning of the data as well as the the data's end
 
     # Creating Command Lines
+        - xargs utility
+            By piping STDOUT from other commands into the xargs utility, you can build command-line commands on the fly.
+             example: find tmp -size 0 | xargs /usr/bin/ls
+                - xargs requires the program's location
+        
+        - Shell expansion "$()"
+            The first method puts a command to execute within parentheses and precedes it with a dollar sign($).
+        
+        - The next methods put commands within backticks (`).
+        
+        - Another method is brace expansion"{}"
+
+# EDITING TEXT FILES
+
+    # Appreciating Text Editors
+    
