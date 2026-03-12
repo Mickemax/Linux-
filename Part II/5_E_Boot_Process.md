@@ -47,12 +47,150 @@
                 
                 # Configuring GRUB Legacy
                     - You need to tell what options to show using special GRUB menu commands.
-                    - It stores the menu commands in a standard text configuration file, called "menu.lst"( Red-hat uses grub.conf). The file is store in /boot/grub folder.
+                    - It stores the menu commands in a standard text configuration file, called "menu.lst"(Red-hat uses grub.conf). The file is store in /boot/grub folder.
                         * The grub legacy configuration file consists of two sections:
                             
                             - Global definitions
                                 It defines commands that control the overall operation of the GRUB Legacy boot menu. It must appear first in the configuration file.
                                     * For GRUB Legacy, to define a value for a command you list the value as a command-line parameter:
+                                        - color command: Defines the color scheme for the menu. the first and second pair defines the foreground/background pair for normal menu and selected menu respectively.
+                                            There are a lot of boot definition settings that you can use to customize how the bootloader finds the operating system kernel file.Only a few are required to define the OS.
+                                                - Title: the first line for each boot definition section; appears in the boot menu.
+                                                - Root: Defines the disk and partition where the GRUB/root folder partition is on the system.
+                                                - Kernel: Defines the kernel image file stored in the /boot folder to load.
+                                                - Initrd: Defines the initial RAM disk file, which contains drivers necessary for the kernel to interact with the system hardware.
+                                                - Rootnoverify: Defines non-linux boot partitions, such as Windows.
+                                        
+                                        - root command:  defines the hard drive and partition that contains the /boot folder for GRUB Legacy.
+                                            ( hddrive, partition) - (hd0,0) first partition on first hard drive.
+                                        
+                                        - initrd command: It helps solve a problem that arises when using specialized hardware or filesystems as the root drive.
+                                            * It defines a file that's mounted by the kernel at boot time as a RAM disk. The kernel can then load modules from the initrd RAM disk, which allows it to access hardware  
+                                                or filesystems not compiled into the kernel itself. /boot directory. called initrd.img-kversion, where kversion is the kernel version number.
+                                            * If you install new hardware on your system that's required to be visible at boot time, you will need to modify the initrd file. 
+                                                    - mkinitrd command in Red Hat-based system.
+                                                    - mkinitramfs in Debian-based systems.
+                                            
+                    # Installing GRUB Legacy
+                        - Install the grub legacy in the MBR.
+                            grub-install
+                        - uses a single parameter- either specify the partition using Linux or GRUB legacy format.
+                            Linux: grub-install /dev/sda
+                            GRUB: grub-install '(hda)'
+                        -If using chainloading method and prefer to install a copy of GRUB legacy on the boot sector of a partition instead of to the MBR of a hard drive.
+                            grub-install /dev/sda1
+                            grub-install 'hd(0,0)'
+
+            # GRUB2
+                The configuration file name is 'grub.cfg' and stores it in the /boot/grub/ folder. Some Red Hat-based Linux distributions also make a symbolic link to this file in the /etc/grub2.cfg file for easy reference.
+
+                # configuring GRUB2
+                    - Uses meneuntry command instead of the title command, and you must enclose each individual boot section with braces immediately.
+                            menuentry "Ubuntu Linux" {
+                                set root=(hd1,1)
+                                linux /boot/vmlinuz
+                                initrd /initrd
+                            }   
+
+                            menuentry"Windows" {
+                                set root=(hd0,1)
+                            }   
+
+                    - Uses the set command to assign value to the root keyword and an equal sign to assign the device.
+                        * Change partition numeration starting with 1, and hard drive to 0.
+                    - rootnoverity and kernel are not used, non-Lunix boot options are now defined the same as Linux boot options using the root environment variable.
+                    - You define the Kernel using Linux command.
+                    - /boot/grub/grub.cfg file is the configuration file and should not be modified.
+                    - /etc/grub folder. This allows you to create individual config file for each bot option installed on your system( Linux and Windows).
+                    - /etc/default/grub configuration file for global commands.
+
+                # Installing GRUB2
+                    You rebuild the main installation file by running the 
+                        grub2-mkconfig program which reads configuration files stored in the /etc/grub.d folder.
+                    You can update the configuration file manually by running; # grub2-mkconfig -o /boot/grub2/grub.cfg  
+                            -o redirect output to the file.
+
+                    Situations where you need to reinstall the grub2, after creating grub.cfg configuration file you can install it onto the primary hard disk using the 'grub2-install' command:
+                        # grub2-install /dev/sda
+                    
+                    # update-grub2
+
+            # Alternative Bootloaders
+                - SYSLINUX: A bootloader for systems that use the Microsoft FAT filesystem.
+                - EXTLINUX: A mini-bootloader for booting from an ext2, ext3, ext4, or btrfs filesystem.
+                - ISOLINUX: A bootloader for booting from a LiveCD or LiveDVD. Requires iso.linux.bin which contains the bootloader program image and isolinux.cfg which contains teh configuration settings.
+                - PXELINUX: A bootloader for booting from a network server. uses Pre-boot eXecution Environment standard, which defines how a network workstation can boot and load an OS from a centreal network server.
+                - MEMDISK: A utility to boot older DOS OS from the other SYSLINUX bootloaders.
+
+
+    # System Recovery
+        - Kernel Failures
+            When the Linux kernel stops running in memory, it is referred to as a kernel panic. It is often due to installing a new kernel without the appropriate module or library changes or starting a program at a new runlevel.
+                # selecting Previous Kernels at Boot
+                    When you install a new kernel file, it's always a good idea to leave the old kernel file in place and create an additonal entry in the GRUB boot menu to poin to the new kernel.
+
+                        # Single-User Mode
+                            At times you may need to perform some type of system maintenancem such as add a new hardware module or library file to get the system to boot properly.  
+                                - GRUB menu allow you to start in single user mode by adding 'single' command. To get there press E key on the boot option.
+                        
+                        # Passing Kernel Parameters
+                            Here, you can add other kernel parameters to the linux command in the GRUB boot menu,which alter the hardware modules it activates.
+                    
+        - Root Drive Failure
+            # Using a Rescue Disk
+                The rescue disk usually boots either from the CD drive or as a USB stick and loads a small Linux system into memory.
+                     # fsck command
+                        checking and fixing hard drive errors. fsck is an alias for a family of commands specific to different types of filesystem(ext2, ext3 and ext4) You need to run the command against the device name if the partition that contains the root directory of your Linux system.
+                            # fsck /dev/sda1
+                     Attempt to reconcile the inode tablle and file blocks stored on the hard drive.
+                            # Rocky uses xfs and instead use the xfs_repair tool, for fsck won't work as it's intended for te ext filesystems.
+                                'df -Th' to list the partitions and their filesystem types.
+            
+            # Mounting a Root Drive
+                When the fsck (or xfs_repair) repair is complete, you can test the repaired partition by mounting it into the virtual directory created in memory.
+                    # mount /dev/sda1 /media
+                
+                You can examine the filesystem stored in the partition to ensure that it's not corrupted. Before rebooting, you should unmount the partition.
+                    #umount /dev/sda1
+
+
+
+
+
+                    
+                    A
+                    B
+                    D
+                    C
+                    ABCDE
+                    ABE
+                    D
+                    E
+                    B
+                    A
+                    BC
+                    C
+                    A
+                    B
+                    D
+                    A
+                    A
+                    D
+                    C
+                    A
+
+                
+
+                    
+
+
+
+
+
+
+                                        
+                            
+
                                         
             
 
