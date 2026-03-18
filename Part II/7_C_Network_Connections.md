@@ -37,5 +37,84 @@
                     # ip link set enp0s3 up
             
             # The net-tools Legacy Tool
+				- The net-tools package was the original method in Linux for managing individual aspects of the network configuration. There are 5 main command you need to use:
+					- ethtool; displays Ethernet settings for a network interface.
+						- Allows to peak inside the network interface card Ethernet settings and change any properties that you may need to in order to communicate with a network device, such as a switch.
+					- ifconfig; displays or sets the IP address and netmask values for a network interface.
+						- You can also use it to view current statistics for a network interface, you can also see the link status of a network interfae, whether it is receiving or transmitting packets.
+						
+					- arp; allows you to display, add, or delete entries in the system Address Resolution Protocol (ARP) table.
+						- 
+					- iwconfig; sets the SSID and encryption key for a wireless interface.
+						- If you are working with wireless network card, you must assign the wireless SSID and encryption key values using the iwconfig command:
+							# iwconfilp6s0 essid "MyNetwork" key s:mypassword
+						- Use the iwlist to display all of the wireless signals your wireless card detects.
+					- route; sets the default router address.
+						- You must also set the default router using the separate route command:
+							# route add default gw 192.168.1.254
+								- route command by itself to view the current default router configured for the system.
+								- You can create the routing table in the system by using the add or del command-line option for the command; route [add] [del] target gw gateway
+								- Where target is the target host or network and gateway is the router address.
+				
+			# Additional Network Features
+				- You need to ensure that a proper DHCP client program is running on your Linux system, if your network uses DHCP.
+				- The DHCP client program communicates with the network DHCP server in the background and assigns the necessary IP address settings as directed by the DHCP server.
+					- dhcpcd; program the most popular, When you use the Linux system's software package manager utility to install the DHCP client program, it sets the program to automatically launch at boot time and handle the IP address configuration needed to interact on the network.
+						- Bonding(network interface bonding) allows you to aggregate multiple interfaces into one virtual network device.
+							You can tell the Linux system how to treat the virtual network device using three different bonding types:
+								- Load balancing: Network traffic is shared between two or more network interfaces.
+								- Aggregation: Two or more network interfaces are combined to create one larger network pipe.
+								- Active/passive: One network interface is live while the other is used as a backup for fault tolerance.
+							To initialize network interface bonding, you must first load teh bonding module in the Linux kernel; Then define the network interface using ip utility: add the appropriate network interfaces to the bond using the ip utility: The Linux system will then treat the bond device as a single network interface depending on the mode you defined.
+					- dhclient
+				pump
+		# Command-Line Networking Tools
+			# The netcat Tool
+				- It act as either a network server or network client, sending and receiving data packets using either TCP or UDP.
+				- Available on either "netcat" or "nc" depending on Linux distribution.
+						syntax: nc host port
+				- By default, netcat will attempt to establish a TCP connection with the remote server.
+				- Can be use to transfer a file from one system to another. just redirect the output of the listening host to a file.
+				- These files are not secured, the s_client package allows you to test secure SSL connections with a network server.
+
+			# The cURL Tool
+				- It allows you to transfer data to or from a remote server using a standard URL address commonly used in browsers. It supports a wide range of connection types, FTP, FTPS, HTTP,HTTPS, IMAP, IMAPS, SMTP, SMTPS, Telnet, and TFTP.
+				
+								
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 
             
