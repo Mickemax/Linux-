@@ -79,7 +79,38 @@
 
 			# The cURL Tool
 				- It allows you to transfer data to or from a remote server using a standard URL address commonly used in browsers. It supports a wide range of connection types, FTP, FTPS, HTTP,HTTPS, IMAP, IMAPS, SMTP, SMTPS, Telnet, and TFTP.
+				- By default, cURL only retrieves the data returned by the web server. add the -i option.
+
+	# Basic Network Troubleshooting
+		# Sending Test Packets
+			- One way to test network connectivity is to send test packets to known hosts. ping and ping6 command.
+			- It sends Internet Control Message Protocol(ICMP) packets to remote hosts using either the IP(ping) or the IPV6(ping6) protocol.
+				- the traceroute command uses an ICMP packets feature to restricts the number of network "hops" they can make.
+				- the mtr program is a package that uses data retrieved from ping and traceroute commands to document network availability and latency in a real-time chart.
+		
+		# Finding Host Information
+			- This test the DNS hostname system.- host
+			- The 'host' command queries the DNS server to determine the IP address associated with the hostname.
+			- You can also specify an IP address for the host command, and it will attempt to find the hostname associated with it.
+			- the 'dig' command display all of the DNS data records associated with a specific host or network.
+				- You can look up the information for a specific hostname or DNS data records associated with a specific network service such as a mail server.
+			- the 'nslookup' command provides an interactive interface where you can look up DNS information for multiple servers or domains.
+			- the 'whois' command attempts to connect to the centralized Interet domain registry at whois.networksolutions.com and retrieve information about who registered the requested domain name.
+		
+	# Advanced Network Troubleshooting
+		# netstat Command
+			- It is part of the net-tools package and can provide a wealth of network information for you.By default, it lists all the open network connections on the system:
+			- netstat command produces lots of output because there are normally lots of programs that use network services on Linux systems. 
+				* -t for TCP, -u for UDP, -s to display statistics for the different types of packets the system.
+		
+		# Examining Sockets
+			- the 'ss' command provides on which port a program is listened.
+			- A program connection to a port is called a socket.
+				# ss -anpt
+					- -anpt display both listening and established TCP connections and the process they're associated with.
 				
+		# Monitoring the Network
+			- 
 								
 				
 
