@@ -110,7 +110,16 @@
 					- -anpt display both listening and established TCP connections and the process they're associated with.
 				
 		# Monitoring the Network
-			- 
+			- Knowing what TCP or UDP packets are being sent between the client and server can be crucial in determining what's going wrong.
+				- tcpdump: The legacy command-line tool for watching network packets.
+				- wireshark: A graphical tool for watching network packets and performing advanced network analysis.
+				- tshark: The command-line version of Wireshark.
+				- nmap: A network scanner that discovers hosts and open network ports on the network.
+				- iperf3: A network load tool that can determine the available network bandwidth between two devices.
+			
+
+	
+
 								
 				
 
