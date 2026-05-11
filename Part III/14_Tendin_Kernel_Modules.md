@@ -21,3 +21,15 @@
     - A ring buffer is a fixed-size data structure in memory. It is not shaped in a ring but instead more like a tube.
 
 # Installing Kernel Modules
+    - Linux typically automatically loads modules as they are needed on the system. You may also want to test a new module or try new module configurations.
+    - Utilities that can help you load modules into the kernel.
+        * insmod utility allows you to insert a single modul into the Linux kernel. Unfortunately, because it is so basic, you have to provide an absolute directory reference to the module file.
+        * modprobe command is easier to use than the insmod utility because you can denote modules by their module name. The modprobe program uses the modules.dep fle to determine any module dependencies. The fle is typically located in the /lib/modules/ subdirectory.
+        * depmod command can be employ to scan through the system looking for any hardware that was not automatically detected. This is useful for troubleshooting problems with new devices.
+
+# Removing Kernel Modules
+    - You can employ the rmmod command to remove(unload) a module with no dependencies.
+    - rmmod understands module names, so you don't have to provide an absolute directory reference to the module file.
+    - Once the module is unloaded the lsmod utility no longer displays the module's name in its output.
+    - The modprobe utility is useful for removing modules hat have one or more dependencies. You just need to add the -r switch, andif you desire detailed information, include the -v switch.
+

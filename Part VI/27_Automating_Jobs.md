@@ -1,0 +1,87 @@
+# Running Scripts in Background Mode
+    # Running in the Background
+        - To run a shell script in background mode from the command-line interface, just place an ampersand symbol after the command:
+            ./test.sh &
+        - As soon as the system displays these items, a new command-line interface prompt appears. You are returned to the shell, and the command you executed runs safety in background mode.
+        - As this point, you can enter new commands at the prompt. However, while the background process is still running, it uses your terminal monitor for output messages.
+    
+    # Running Multiple Background Jobs
+        - You can start any number of background jobs at the same time from the command-line prompt:
+        - Each time you start a new job, the shell assigns it a new job number, and the Linux system assigns it a new PID.
+        - You can see that all of the scripts are running by using the ps command.
+
+# Running Scripts Without a Console
+    - You can run a script in background mode until it finishes, even if you exit the terminal session, by using the nohup command.
+    - The nohup command runs another command blocking any SIGHUP signals that are sent to the process.
+    - This prevents the process from exiting when you exit your terminal session.
+
+# Sending Signals
+    # Interrupting a Process
+        - The Ctrl+C combination generates a signal interrupt(SIGINT) signal and sends it to any processes currently running in the shell.
+
+    # Pausing a Process
+        - The Ctrl+Z key combination generates a signal terminal stop (SIGTSTP) signal, stopping any processes running in the shell.
+        - Stopping a process is different than terminating the process, as stopping the process leaves the program still in memory and able to continue running from where it left off.
+        - The ps command shows the status of the stopped job as T, which indicates the command either is being traced or is stopped. The original Bash shell is shown as S, indicating that it's sleeping, waiting for the script to end.
+
+# Job Control
+    - In the previous section you saw how to use the Ctrl+Z key combination to stop a job running in the shell.
+    - After you stop a job, the Linux system lets you either kill or restart it. Restarting a stopped process requires sending it a signal continue (SIGCONT) signal.
+    - The function of starting, stopping, killing, and resuming jobs is called job control.
+        # Viewing Jobs
+            - The key command for jobs control is the jobs command.
+            - The jobs command allows you to view the current jobs being handled by the shell.
+            - The jobs command uses a few different command-line parameters.
+            - The job with the plus sign is considered the default job. 
+            - The job with the minus sign is the job that would become the default job when the current default job finishes processing.
+        
+        # Restarting Stopped Jobs
+            - To restart a job in background mode, use the bg command along with the job number.
+            - To restart a job in foreground mode, use the fg command along with the job number.
+
+# Running Like Clockwork
+    # Scheduling a Job Using the at Command
+        - The at command allows you to specify a time when the Linux system will run a script. It submits a job to a queue with directions on when the shell should run the job.
+        - Another command, atd, runs in the background and checks the job queue for jobs to run.
+        - The atd command checks a special directory on the system(usually /var/spool/at) for jobs submitted using the at command.
+        - By default, the atd command checks this directory every 60 seconds.
+        - Let's see how to use the at command to submit jobs to run and how to manage jobs.
+            # The at Command Format
+                - The basic at command format:
+                    at [-f filename] time
+                - By default, the at command submits input from STDIN to the queue. 
+                - You can specify a filename used to read commands using the -f parameter.
+                - The time parameter specifies when you want the Linux system to run the job.
+                - The at command recognizes lots of different time formats.
+                - By default, all at jobs are submitted to job queue a, the highest-priority queue. If you want to run a job at a lower priority, you can specify the letter using the -q parameter.
+            
+            # Retrieving Job Output
+                - When the job runs the Linux system, there's no monitor associated with the job. Instead, the Linux system uses the email address of the user who submitted the job. Any output destined to STDOUT or STDERR is mailed to the user via the mail system.
+                - When the job completes, nothing appears on the monitor, but the system generates an email message. The email message shows the output generated by the script.
+                - If the script doesn't produce any output, it won't generate an email message, by default.
+            
+            # Listing Pending Jobs
+                - The atq command allows you to view what jobs are pending on the system:
+                - The job listing shows the job nuumber, the date and time the system will run the job, and the job queue the job is stored in.
+            
+            # Removing Jobs
+                - After you know the information about what jobs are pending in the job queues, you can use the atrm command to remove a pending job:
+                - Just specify the number of the job you want to remove. You can only remove jobs you submit for execution.
+    
+    # Scheduliing  Regular Scripts
+        - Using the at command to schedule a script to run at a preset time is great, but if you need script to run at the same time every day or once a week or once a month? Instead of having to continualy submit at jobs, you can use another feature of the Linux system.
+
+            # The cron Table
+                - The cron table uses a specifc format for allowing you to specify when a job should be run. The format for the cron table is as follows:
+                    * min hour dayofmonth month dayofweek command
+                - The cron table allows you to specify entries as specific values, as ranges of values, or as a wildcard character.
+
+            # Building the cron Table
+                - All system users can have their own cron table for running scheduled jobs.
+                - Linux provides the crontab command for handling the cron table. To list an existing cron table use the -l parameter: crontab -l
+                - To add entries to your cron table, use the -e parameter. When you do that, the crontab command automatically starts the vi editor with the existing cron table or an empty file if it doesn't yet exist.
+            
+            # Working with systemd Timers
+                - Systems that utilize the systemd startup method can also use the systemd timer feature to automatically start programs. The timer unit files allow you to define events that occur at specific dates or times, similar to how the cron program works.
+                - Timer unit files are designated by a .timer file extension, and include a [Timer] section to define the directives required to determine when to start the event.
+                - timer units provid several options for how to set the timer that aren't available in the cron program.
